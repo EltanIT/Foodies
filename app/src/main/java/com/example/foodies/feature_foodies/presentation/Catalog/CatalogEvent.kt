@@ -2,6 +2,7 @@ package com.example.foodies.feature_foodies.presentation.Catalog
 
 import com.example.foodies.feature_foodies.domain.model.Product
 
+//Все события для экрана Catalog
 sealed class CatalogEvent {
     data class FilteredByCategoryId(val value: Int): CatalogEvent()
     data class AddInCard(val value: Product): CatalogEvent()

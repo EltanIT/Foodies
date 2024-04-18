@@ -3,6 +3,7 @@ package com.example.foodies.feature_foodies.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//Дата класс объекта корзины
 @Entity
 data class ProductInCart(
     @PrimaryKey(true)
@@ -16,6 +17,8 @@ data class ProductInCart(
     val count: Int? = 1,
 )
 
+
+//Функция для преобразования объект корзины товара в продукт
 fun ProductInCart.toProductInCart(): Product{
     return Product(
         id = id,

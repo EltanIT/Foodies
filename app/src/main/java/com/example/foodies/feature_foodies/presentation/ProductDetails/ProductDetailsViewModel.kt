@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodies.common.Resource
-import com.example.foodies.feature_foodies.domain.model.Product
 import com.example.foodies.feature_foodies.domain.useCase.Card.AddItemInCardUseCase
 import com.example.foodies.feature_foodies.domain.useCase.Card.DeleteItemFromCardUseCase
 import com.example.foodies.feature_foodies.domain.useCase.Card.GetItemFromCardByIdUseCase
@@ -33,6 +32,8 @@ class ProductDetailsViewModel @Inject constructor(
     private val _state = mutableStateOf(ProductDetailsState())
     val state: State<ProductDetailsState> = _state
 
+
+    //Обработка всевозможных действий, который пользователь может совершить
     fun onEvent(event: ProductsDetailsEvent){
         when(event){
             ProductsDetailsEvent.AddInCard -> {
@@ -65,6 +66,7 @@ class ProductDetailsViewModel @Inject constructor(
 
 
 
+    //Получение продукта из api по id
     fun getProduct(id: Int) {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -127,6 +129,7 @@ class ProductDetailsViewModel @Inject constructor(
         }
     }
 
+    //Получение продукта из корзины по id
     private suspend fun getCardItem(id: Int) {
         getItemFromCardByIdUseCase(id).onEach { result ->
             _state.value = state.value.copy(

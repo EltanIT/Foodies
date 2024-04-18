@@ -9,7 +9,7 @@ import com.example.foodies.common.Constants
 import com.example.foodies.common.Resource
 import com.example.foodies.feature_foodies.domain.model.Product
 import com.example.foodies.feature_foodies.domain.useCase.Card.CartUseCase
-import com.example.foodies.feature_foodies.domain.useCase.GetCategoriesUseCase
+import com.example.foodies.feature_foodies.domain.useCase.Categories.GetCategoriesUseCase
 import com.example.foodies.feature_foodies.domain.useCase.Product.GetProducts
 import com.example.foodies.feature_foodies.domain.useCase.Tags.GetTags
 import com.example.foodies.feature_foodies.domain.util.ProductOrderType
@@ -47,6 +47,7 @@ class CatalogViewModel @Inject constructor(
     private var getCardJob: Job? = null
 
 
+    //Обработка всевозможных действий, который пользователь может совершить
     fun onEvent(event: CatalogEvent){
         when(event){
             is CatalogEvent.EnteredSearch -> {
@@ -179,6 +180,7 @@ class CatalogViewModel @Inject constructor(
         }
     }
 
+    //Полное обновление всех данных
     fun updateAllData() {
         viewModelScope.launch(Dispatchers.IO) {
             launch {getCard()}
@@ -186,6 +188,8 @@ class CatalogViewModel @Inject constructor(
             launch {getCategories()}
         }
     }
+
+    //Алгоритм передачи фильтров для получения списка продуктов
     private fun updateProductsList(){
         viewModelScope.launch(Dispatchers.Main) {
             if (state.value.searchIsOpen || state.value.search.isNotEmpty()){
@@ -212,6 +216,7 @@ class CatalogViewModel @Inject constructor(
         }
     }
 
+    //Получение списка категорий
     private suspend fun getCategories() {
         getCategoriesJob?.cancel()
         getCategoriesJob = categoriesUseCase().onEach { result ->
@@ -250,6 +255,7 @@ class CatalogViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+    //Получение корзины
     private suspend fun getCard() {
         getCardJob?.cancel()
         getCardJob = cartUseCase.getAllCardItemsUseCase().onEach { result ->
@@ -262,6 +268,7 @@ class CatalogViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
+    //Получение списка продуктов, на основе фильтров
     private fun getProductsByOrder(vararg order: ProductOrderType){
         viewModelScope.launch(Dispatchers.IO) {
             var errorText = ""
@@ -339,6 +346,7 @@ class CatalogViewModel @Inject constructor(
         }
 
     }
+    //Получение списка тегов
     private suspend fun getTags(){
 
         getTagsJob?.cancel()

@@ -5,6 +5,7 @@ import com.example.foodies.feature_foodies.data.remote.dto.ProductDto
 import com.example.foodies.feature_foodies.domain.repository.ProductsRepository
 import com.example.foodies.feature_foodies.domain.util.ProductOrderType
 
+//Реализация репозитория для взаимодействия с api и продуктов
 class ProductsRepositoryImpl(
     private val productsApi: ProductsApi
 ): ProductsRepository {

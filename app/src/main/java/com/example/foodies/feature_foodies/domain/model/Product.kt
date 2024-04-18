@@ -1,6 +1,6 @@
 package com.example.foodies.feature_foodies.domain.model
 
-
+//Дата класс продуктов
 data class Product(
     val id: Int? = null,
     val category_id: Int? = null,
@@ -18,6 +18,8 @@ data class Product(
     val tag_ids: List<Int> = emptyList(),
 )
 
+
+//Функция для преобразования товара в объект корзины
 fun Product.toProductInCart(): ProductInCart{
     return ProductInCart(
         id = id,

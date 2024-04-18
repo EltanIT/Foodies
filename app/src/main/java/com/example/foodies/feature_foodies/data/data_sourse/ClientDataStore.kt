@@ -4,6 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.foodies.feature_foodies.domain.model.ProductInCart
 
+
+//Класс для инициализации бд
 @Database(
     entities = [ProductInCart::class],
     version = 4

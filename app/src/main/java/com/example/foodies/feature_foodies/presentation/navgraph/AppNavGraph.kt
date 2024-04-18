@@ -18,7 +18,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.foodies.feature_foodies.presentation.Cart.CartScreen
 import com.example.foodies.feature_foodies.presentation.Catalog.CatalogScreen
-import com.example.foodies.feature_foodies.presentation.Catalog.CatalogViewModel
 import com.example.foodies.feature_foodies.presentation.ProductDetails.ProductDetailsScreen
 import com.example.foodies.feature_foodies.presentation.ProductDetails.ProductDetailsViewModel
 import com.google.accompanist.systemuicontroller.SystemUiController

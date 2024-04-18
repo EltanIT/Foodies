@@ -1,5 +1,7 @@
 package com.example.foodies.feature_foodies.domain.util
 
+
+//Класс для сортировки списка продуктов
 sealed class ProductOrderType {
     data class Search(val value: String): ProductOrderType()
     data class Category(val id: Int): ProductOrderType()

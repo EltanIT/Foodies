@@ -1,4 +1,4 @@
-package com.example.foodies.feature_foodies.domain.useCase
+package com.example.foodies.feature_foodies.domain.useCase.Categories
 
 import com.example.foodies.common.Resource
 import com.example.foodies.feature_foodies.data.remote.dto.toCategory

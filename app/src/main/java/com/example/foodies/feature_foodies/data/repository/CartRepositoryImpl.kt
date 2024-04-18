@@ -7,6 +7,8 @@ import com.example.foodies.feature_foodies.domain.model.toProductInCart
 import com.example.foodies.feature_foodies.domain.repository.CartRepository
 import kotlinx.coroutines.flow.Flow
 
+
+//Реализация репозитория для взаимодействия с бд таблицой корзина
 class CartRepositoryImpl(
     private val cardDao: CartDao
 ): CartRepository {

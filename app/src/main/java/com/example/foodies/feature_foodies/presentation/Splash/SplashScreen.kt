@@ -33,6 +33,7 @@ fun SplashScreen(
         }
     }
 
+    //Использована библиотека LottieCompose
     LottieAnimation(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.primary),
         composition = composition,
